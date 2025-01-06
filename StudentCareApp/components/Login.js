@@ -8,6 +8,18 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigation();
 
+  const handlebutton = () => {
+    const student = students.find(
+      (student) => student.username === name && student.password === password
+    );
+
+    if (student) {
+      navigate.navigate("profile", { studentdata: student });
+    } else {
+      alert("Invalid username or password.");
+    }
+  };
+
   return (
     <PaperProvider>
       <View style={styles.container}>
